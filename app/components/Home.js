@@ -1,7 +1,7 @@
 import React from 'react';
 import CityInputContainer from '../containers/CityInputContainer';
 
-var styles = {
+const styles = {
   container: {
 		display: 'flex',
 		flexDirection: 'column',

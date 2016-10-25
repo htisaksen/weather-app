@@ -26,7 +26,7 @@ const CityInputContainer = React.createClass({
   contextTypes:{
     router: React.PropTypes.object.isRequired
   },
-  // set city to empty string and a search switch to true
+  // set city to empty string and a search switch as true
   getInitialState: function(){
     return {
       search: true,
@@ -43,7 +43,6 @@ const CityInputContainer = React.createClass({
     } else {
       // Inputs submitted city into least used cache
       cacheList.set(this.state.city);
-      console.log(cacheList)
       // pushes submitted city into the route
       this.context.router.push({
         pathname: '/weather/' + this.state.city

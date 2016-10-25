@@ -16,7 +16,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 	publicPath: webpackConfig.output.publicPath
 }));
 
-//allows me to rerun webpack without restarting the server
+//allows me to rerun webpack without restarting the server. Combined with nodemon = excellent dev combo
 app.use(require('webpack-hot-middleware')(compiler));
 
 //catch all route function

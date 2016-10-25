@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router'
 
-var styles = {
+const styles = {
 	nav: {
 		background: "linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)",
 	},

@@ -1,6 +1,5 @@
-//caches x amount of searches.
-//config allows kwarg parameters to provide parameter flexibility to the function
-
+// caches x amount of searches.
+// config allows kwarg parameters to provide parameter flexibility to the function
 
 var Node = function Node(config){
   config = config || {};
@@ -16,25 +15,30 @@ var CacheList = function CacheList(config){
   this.head;
   this.tail;
 };
-//passes search values into function to add or move values around dataset
+
+// passes search values into function to add or move values around dataset
 CacheList.prototype.set = function(search){
   var cache = this.cacheMap[search];
-  //validates if search value is in dataset
+  // validates if search value is not in dataset
   if(!cache){
-    //if incremented count is not equal to our maxcache, we create a cache
+    // if incremented count is not equal to our maxcache, we create a cache
     if(this.cacheCount !== this.maxCaches){
-      //if createcache returns true, added node(value) is placed in cacheMap
+      // if createcache returns true, added node(value) is placed in cacheMap
       if(this.createCache(search)){
         this.cacheMap[search] = this.head;
       }
     } else {
+      // if search is in the map, we move it to the head.
+      // deletes the map reference to tail
       // write over tail value with `search`
       // then move tail to head
-      var oldTailValue = this.tail.value;
+      var oldTailValue = this.tail.value; //holds removed tail value in the event of possible failure
       delete this.cacheMap[this.tail.value];
       this.tail.value = search;
+      // if move cache returns true, we finalize the move towards the head
       if (this.moveCache(this.tail)){
         this.cacheMap[search] = this.head;
+      // if there is an error we will keep the old value declared above
       } else {
         this.tail.value = oldTailValue;
       }
@@ -58,7 +62,8 @@ CacheList.prototype.createCache = function(value){
     this.head.prev = newCache
     this.head = newCache;
   }
-  // if cacheCount === 0 set this.tail equal to this.head
+  // checks if the cache is empty.
+  //sets the new node(cache) to both head and tail
   else if(this.cacheCount === 0){
     this.tail = this.head = newCache;
   }
@@ -103,16 +108,3 @@ module.exports = {
   Node:Node,
   CacheList:CacheList
 }
-// croton, ossining, tarrytown, irvington, dobbs ferry, hastings, yonkers, new york, tokyo, paris, munich, oslo, bergen, white plains, nyack
-// var cacheList = new CacheList({"maxCaches":4});
-// cacheList.set('Tarrytown')
-// cacheList.set('Toronto')
-// cacheList.set('Oslo')
-// cacheList.set('New York')
-// cacheList.set('Irvington')
-// // console.log(cacheList)
-// var cacheMapp = cacheList.cacheMap
-// cacheArray = Object.keys(cacheMapp)
-// for(i = 0;i < cacheArray.length ;i++){
-//   console.log(cacheArray[i])
-//   }

@@ -1,5 +1,6 @@
 var todayDate = function(){
   var date = new Date();
+  //date.getMonth() returns a number -1 from the actual month(october = 9). monthArray will display the month based on the number.
   var monthArray = new Array();
   monthArray[0] = "January";
   monthArray[1] = "February";

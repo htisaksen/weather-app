@@ -1,7 +1,9 @@
 import React from 'react';
 import GetWeather from '../utilities/weatherApi';
+
 var PropTypes = React.PropTypes
-var styles = {
+
+const styles = {
   buttons: {
     backgroundColor:"#1bacbd",
     width:"100%"
@@ -23,7 +25,7 @@ function Button(props){
 
 const Input = React.createClass({
   add: function(event){
-    //listens for enter key(keyCode 13)
+    // listens for enter key(keyCode 13)
     if (event.keyCode === 13){
       return this.props.onCityInput()
     }
@@ -41,8 +43,8 @@ const Input = React.createClass({
   }
 });
 
-//Search will check for search's boolean value. If there is an
-//improper entry, it will ask for another input
+// Search will check for search's boolean value. If there is an
+// improper entry, it will ask for another input
 function Search(props){
   if(props.search === false){
     return<h6> Please enter a city below</h6>
@@ -50,7 +52,7 @@ function Search(props){
     return <div></div>
   }
 };
-//onCityInput(invalid input check) run twice for button click/return key trigger
+// onCityInput(invalid input check) run twice for button click/return key trigger
 function CityInput(props){
   return (
     <div>

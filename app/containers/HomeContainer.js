@@ -9,4 +9,4 @@ const HomeContainer = React.createClass({
 	}
 })
 
-export default HomeContainer;
+module.exports = HomeContainer;
