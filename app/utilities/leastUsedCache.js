@@ -1,5 +1,5 @@
 //caches x amount of searches.
-//config allows kwarg parameters to provide flexibility to the class
+//config allows kwarg parameters to provide parameter flexibility to the function
 
 
 var Node = function Node(config){
@@ -16,17 +16,20 @@ var CacheList = function CacheList(config){
   this.head;
   this.tail;
 };
-
+//passes search values into function to add or move values around dataset
 CacheList.prototype.set = function(search){
   var cache = this.cacheMap[search];
+  //validates if search value is in dataset
   if(!cache){
+    //if incremented count is not equal to our maxcache, we create a cache
     if(this.cacheCount !== this.maxCaches){
+      //if createcache returns true, added node(value) is placed in cacheMap
       if(this.createCache(search)){
         this.cacheMap[search] = this.head;
       }
     } else {
       // write over tail value with `search`
-      // move to front
+      // then move tail to head
       var oldTailValue = this.tail.value;
       delete this.cacheMap[this.tail.value];
       this.tail.value = search;
@@ -79,7 +82,7 @@ CacheList.prototype.moveCache = function(node){
       return true;
     }
     // validate if node.next and node.prev is a node
-    // if true, reset node's next and prev pointers to point at each other
+    // if true, reset node's next and prev node pointers to point at each other
     else if (node.next && node.prev){
       var nextNode = node.next;
       var prevNode = node.prev;
@@ -100,11 +103,16 @@ module.exports = {
   Node:Node,
   CacheList:CacheList
 }
+// croton, ossining, tarrytown, irvington, dobbs ferry, hastings, yonkers, new york, tokyo, paris, munich, oslo, bergen, white plains, nyack
 // var cacheList = new CacheList({"maxCaches":4});
-//croton, ossining, tarrytown, irvington, dobbs ferry, hastings, yonkers, new york, tokyo, paris, munich, oslo, bergen, white plains, nyack
 // cacheList.set('Tarrytown')
 // cacheList.set('Toronto')
 // cacheList.set('Oslo')
 // cacheList.set('New York')
 // cacheList.set('Irvington')
-// console.log(cacheList)
+// // console.log(cacheList)
+// var cacheMapp = cacheList.cacheMap
+// cacheArray = Object.keys(cacheMapp)
+// for(i = 0;i < cacheArray.length ;i++){
+//   console.log(cacheArray[i])
+//   }

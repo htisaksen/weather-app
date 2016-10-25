@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from './Loading';
+import todayDate from '../utilities/date';
 var PropTypes = React.PropTypes;
-
 var styles = {
   container: {
     display: 'flex',
@@ -27,12 +27,11 @@ var styles = {
 }
 
 function TodayDate(props){
-  var date = new Date()
-  var dayYear = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
-  return <h4 style={styles.date}>Date: {dayYear}</h4>
+  return <h4 style={styles.date}>Date: {todayDate()}</h4>
 };
 //
 function WeatherInterface(props){
+  console.log(props)
   return(
     <div className="Row">
       <div className="col s12">

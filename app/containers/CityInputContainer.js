@@ -1,7 +1,24 @@
 import React from 'react';
 import CityInput from '../components/CityInput';
 import {Node, CacheList} from '../utilities/leastUsedCache';
+
+//set maximum cache storages with CacheList({"maxCaches":<set max caches>});
 var cacheList = new CacheList({"maxCaches":15});
+
+// // ============================================================
+// //resentsearch
+// var cityNodes = cacheList.cacheMap;
+// var cacheArray = Object.keys(cityNodes);
+// var options = [];
+// for(var i = 0;i < cacheArray.length ;i++){
+//   options.push({value: cacheArray[i], label:cacheArray[i]})
+// }
+// var logChange = function(val) {
+//     console.log("Selected: " + val);
+// }
+
+// //==============================================================
+
 
 // Rendered in Home component
 // Used to update state and store user inputs
@@ -45,7 +62,7 @@ const CityInputContainer = React.createClass({
         search = {this.state.search}
         onCityInput = {this.invalidCityInput}
         onUpdateCity = {this.updateCity}
-        city = {this.state.city} />
+        city = {this.state.city}/>
     )
   }
 });
