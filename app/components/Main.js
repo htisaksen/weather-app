@@ -9,9 +9,15 @@ const styles = {
 		color: "white",
 	},
   logo: {
-  color: "white",
-  fontWeight: "1.5em",
-  fontSize: "1.5em"
+		paddingLeft: "15px",
+	  color: "white",
+	  fontWeight: "1.5em",
+	  fontSize: "1.5em"
+	},
+	back: {
+		color: "white",
+	  fontWeight: "1.5em",
+	  fontSize: "1.5em"
 	}
 };
 
@@ -32,7 +38,7 @@ const Main = React.createClass({
 							<li>
 								<Link
 									to='/'
-									style={styles.logo}>
+									style={styles.back}>
 									Back
 								</Link>
 							</li>
