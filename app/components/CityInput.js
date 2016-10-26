@@ -37,7 +37,7 @@ const Input = React.createClass({
       type="text"
       id="autocomplete-input"
       onChange = {this.props.onUpdateCity}
-      placeholder = "Enter a city or zip below"
+      placeholder = "Enter a city"
       value = {this.props.city}
       onKeyDown = {this.add} />
     )
@@ -48,7 +48,7 @@ const Input = React.createClass({
 // improper entry, it will ask for another input
 function Search(props){
   if(props.search === false){
-    return<h6> Please re-enter enter a city or zip below</h6>
+    return<h6> Please re-enter enter a city below</h6>
   } else{
     return <div></div>
   }
