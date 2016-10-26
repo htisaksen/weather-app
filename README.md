@@ -9,6 +9,7 @@
 
 **Users will need to get their own API key from www.openweathermap.org and pass it to the _APIKEY variable in weatherApi.js**
 
+**Using Windytv.com to show displayed wather data**
 
 - Using containers/Components style
  - Containers hold business logic
