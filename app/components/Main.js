@@ -13,7 +13,7 @@ const styles = {
   fontWeight: "1.5em",
   fontSize: "1.5em"
 	}
-}
+};
 
 const Main = React.createClass({
 	render(){
@@ -43,6 +43,6 @@ const Main = React.createClass({
 			</div>
 		)
 	}
-})
+});
 
 export default Main;

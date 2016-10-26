@@ -12,6 +12,6 @@ const router = (
 			<Route path='/weather/:city' component={CityWeatherContainer} />
 		</Route>
 	</Router>
-)
+);
 
 module.exports = router;

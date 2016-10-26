@@ -11,6 +11,7 @@ const CityInputContainer = React.createClass({
   contextTypes:{
     router: React.PropTypes.object.isRequired
   },
+
   // set city to empty string and a search switch as true
   getInitialState: function(){
     return {
@@ -18,11 +19,12 @@ const CityInputContainer = React.createClass({
       city: ''
     }
   },
+
   // manages case when user submits empty string
   invalidCityInput: function(event){
     if(this.state.city === ''){
       this.setState({
-        search: true,
+        search: false,
         city: ''
       })
     } else {
@@ -34,6 +36,7 @@ const CityInputContainer = React.createClass({
       })
     }
   },
+
   // updates this.state.city as user inputs
   updateCity: function(event){
     this.setState({
@@ -50,7 +53,8 @@ const CityInputContainer = React.createClass({
     )
   }
 });
-//  Jquery for autocomplete
+
+//  Jquery for autocomplete - need to change to something less expensive eg. react-autocomplete - Wanted consistent materialize style
 $( document ).ready(function() {
 
   $('body').on('click', '#autocomplete-input', function(event){
@@ -58,14 +62,15 @@ $( document ).ready(function() {
     if($('input.autocomplete').next() !== $('ul.ulReplace autocomplete-content dropdown-content')){
       $('input.autocomplete').next().html("<ul class='ulReplace autocomplete-content dropdown-content'></ul>")
     }
+
     $('input.autocomplete').autocomplete({
       data: data
-    });
+    })
+
     if($('ul').next().next()[0] == $('button')[0]){
       $('button').prev().remove()
     }
-  });
-});
-//&& $('ul').next()[0] === $('button')[0]
+  })
+})
 
 module.exports = CityInputContainer;

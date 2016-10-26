@@ -1,12 +1,16 @@
 // caches x amount of searches.
 // config allows kwarg parameters to provide parameter flexibility to the function
 
+// creating doubly Linked List nodes
 var Node = function Node(config){
   config = config || {};
   this.value = config.value;
   this.next = config.next;
   this.prev = config.prev;
 };
+
+// creating cachelist with a cacheMap to search for data.
+// doubly linked list is more efficient in storage than iterating through a linked list
 var CacheList = function CacheList(config){
   config = config || {};
   this.cacheMap = {};
@@ -59,7 +63,7 @@ CacheList.prototype.createCache = function(value){
   // sets pointers on this.head and new node
   if(this.head){
     newCache.next = this.head;
-    this.head.prev = newCache
+    this.head.prev = newCache;
     this.head = newCache;
   }
   // checks if the cache is empty.
@@ -106,10 +110,11 @@ CacheList.prototype.moveCache = function(node){
 
 };
 
-// autocomplete utility
+// autocomplete dataset format utility
+// autocomplete requires format(data: {key:val,key:val})
 CacheList.prototype.autoFill = function() {
   var node = this.tail;
-  var data = {}
+  var data = {};
 
   while(node){
     data[node.value] = null;

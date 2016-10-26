@@ -11,14 +11,17 @@ var CityWeatherContainer = React.createClass({
     return {
       isFetching: true,
       weatherData: {},
-      isError: false,
     }
   },
   // passes city into getCurrentWeather function using react life cycle function
-  componentWillMount: function(){
+  // function invoked after component is mounted
+  componentDidMount: function(){
     this.getWeather(this.props.params.city)
   },
   // componentWillReceiveProps: function(){
+  //   this.getWeather(this.props.params.city)
+  // },
+  // componentWillMount: function(){
   //   this.getWeather(this.props.params.city)
   // },
   // passes user input into weatherApi and retrieves the weather json object
@@ -32,24 +35,14 @@ var CityWeatherContainer = React.createClass({
         })
       }.bind(this))
   },
-  // .catch(function(error){
-  //   console.log(error)
-  //   }
-  //   this.setState({
-  //     isError: true,
-  //     errorStatement: String(error),
-  //   }.bind(this))
-// )
 
   render: function(){
-    console.log()
     return(
       <div>
         <CityWeather
           city={this.props.params.city}
           weatherData={this.state.weatherData}
           isFetching = {this.state.isFetching}
-          isError = {this.state.isError}
           errorStatement={this.state.errorStatement}/>
       </div>
     )

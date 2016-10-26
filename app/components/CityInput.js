@@ -1,15 +1,11 @@
 import React from 'react';
 import GetWeather from '../utilities/weatherApi';
 
-var PropTypes = React.PropTypes
+var PropTypes = React.PropTypes;
 
 const styles = {
   buttons: {
     backgroundColor:"#1bacbd",
-    position:"relative",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
     width:'100%'
   }
 };
@@ -25,11 +21,11 @@ function Button(props){
       {props.children}
       </button>
   )
-};
+}
 
 const Input = React.createClass({
   add: function(event){
-    // listens for enter key(keyCode 13)
+    // listens for return key(keyCode 13)
     if (event.keyCode === 13){
       return this.props.onCityInput()
     }
@@ -41,22 +37,23 @@ const Input = React.createClass({
       type="text"
       id="autocomplete-input"
       onChange = {this.props.onUpdateCity}
-      placeholder = "Enter a city"
+      placeholder = "Enter a city or zip below"
       value = {this.props.city}
       onKeyDown = {this.add} />
     )
-  }
+  },
 });
 
 // Search will check for search's boolean value. If there is an
 // improper entry, it will ask for another input
 function Search(props){
   if(props.search === false){
-    return<h6> Please enter a city or zip below</h6>
+    return<h6> Please re-enter enter a city or zip below</h6>
   } else{
     return <div></div>
   }
-};
+}
+
 // onCityInput(invalid input check) run twice for button click/return key trigger
 function CityInput(props){
   return (
@@ -73,13 +70,13 @@ function CityInput(props){
       </Button>
     </div>
   )
-};
+}
 
 CityInput.PropTypes = {
   search: PropTypes.bool.isRequired,
   onCityInput: PropTypes.func.isRequired,
   onUpdateCity: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired
-};
+}
 
 module.exports = CityInput;

@@ -28,15 +28,17 @@ const styles = {
 	paddingList: {
 		padding: ".5em",
     textAlign: "left",
-    fontSize: '1.5em',
+    fontSize: '1.0em',
     display: 'flex-inline-block'
 	}
-}
-
-function TodayDate(props){
-  return <h4 style={styles.date}>Date: {todayDate()}</h4>
 };
 
+// imported date function from date utility
+function TodayDate(props){
+  return <h5 style={styles.date}>Date: {todayDate()}</h5>
+}
+
+// displays weather information from API
 function WeatherInterface(props){
   return(
     <div className="Row">
@@ -56,35 +58,33 @@ function WeatherInterface(props){
       </div>
     </div>
   )
-};
-
-
+}
 
 function CityWeather(props){
-  // console.log(props)
-  // console.log(props.isError)
-  // console.log('propserror ' +props.errorStatement)
-  if(props.isError){
-    return
+  // response property is created during an error in axios get request
+  if(props.weatherData.response){
+    return(
     <div style={styles.container}>
-      <h4 style={styles.heading}>Weather could not be retrieved. Please go back.</h4>
+      <h4 style={styles.container}>Weather could not be retrieved. Please go back.</h4>
     </div>
+    )
   } else {
   return  props.isFetching === true
     // Ternary operator to check isLoading bool in cityContainer logic
     ? <Loading />
     : <div style={styles.container}>
-        <h4 style ={styles.heading}>
+        <h5 style ={styles.heading}>
           {props.weatherData.data.name}, {props.weatherData.data.sys.country}
-        </h4>
-        <h5>
-          {props.weatherData.data.coord.lat}, {props.weatherData.data.coord.lon}
         </h5>
+        <h6>
+          Latitude: {props.weatherData.data.coord.lat}, Longitude: {props.weatherData.data.coord.lon}
+        </h6>
         <WeatherInterface
           data={props.weatherData.data}/>
     </div>
   }
-};
+}
+
 CityWeather.PropTypes={
   city: PropTypes.string.isRequired,
   weatherData: PropTypes.object.isRequired,

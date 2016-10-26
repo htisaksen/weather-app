@@ -11,7 +11,7 @@ const styles = {
 		width: '100%',
 		color: 'black'
 	}
-}
+};
 
 function Home(props){
 	return(
@@ -20,7 +20,7 @@ function Home(props){
       className="container">
 			<div className="row">
 				<div>
-					<h1> Today's Weather </h1>
+					<h2> Today's Weather </h2>
 					<CityInputContainer />
 				</div>
 			</div>

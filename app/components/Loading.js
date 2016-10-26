@@ -4,7 +4,7 @@ const styles = {
   myContainer: {
     minHeight: "100vh",
   }
-}
+};
 
 function Loading(props){
 	return(
