@@ -6,7 +6,11 @@ var PropTypes = React.PropTypes
 const styles = {
   buttons: {
     backgroundColor:"#1bacbd",
-    width:"100%"
+    position:"relative",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width:'100%'
   }
 };
 
@@ -33,8 +37,9 @@ const Input = React.createClass({
   render: function(){
     return (
       <input
-      className="input-field"
+      className="autocomplete"
       type="text"
+      id="autocomplete-input"
       onChange = {this.props.onUpdateCity}
       placeholder = "Enter a city"
       value = {this.props.city}
@@ -47,7 +52,7 @@ const Input = React.createClass({
 // improper entry, it will ask for another input
 function Search(props){
   if(props.search === false){
-    return<h6> Please enter a city below</h6>
+    return<h6> Please enter a city or zip below</h6>
   } else{
     return <div></div>
   }
@@ -61,9 +66,10 @@ function CityInput(props){
         onUpdateCity = {props.onUpdateCity}
         onCityInput = {props.onCityInput}
         city = {props.city}/>
+        <ul className='ulReplace autocomplete-content dropdown-content'></ul>
       <Button
         onCityInput = {props.onCityInput}>
-        Retrieve Current Weather
+        Get Current Weather
       </Button>
     </div>
   )

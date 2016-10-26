@@ -5,21 +5,6 @@ import {Node, CacheList} from '../utilities/leastUsedCache';
 //set maximum cache storages with CacheList({"maxCaches":<set max caches>});
 var cacheList = new CacheList({"maxCaches":15});
 
-// // ============================================================
-// //resentsearch
-// var cityNodes = cacheList.cacheMap;
-// var cacheArray = Object.keys(cityNodes);
-// var options = [];
-// for(var i = 0;i < cacheArray.length ;i++){
-//   options.push({value: cacheArray[i], label:cacheArray[i]})
-// }
-// var logChange = function(val) {
-//     console.log("Selected: " + val);
-// }
-
-// //==============================================================
-
-
 // Rendered in Home component
 // Used to update state and store user inputs
 const CityInputContainer = React.createClass({
@@ -65,5 +50,22 @@ const CityInputContainer = React.createClass({
     )
   }
 });
+//  Jquery for autocomplete
+$( document ).ready(function() {
+
+  $('body').on('click', '#autocomplete-input', function(event){
+    var data = cacheList.autoFill();
+    if($('input.autocomplete').next() !== $('ul.ulReplace autocomplete-content dropdown-content')){
+      $('input.autocomplete').next().html("<ul class='ulReplace autocomplete-content dropdown-content'></ul>")
+    }
+    $('input.autocomplete').autocomplete({
+      data: data
+    });
+    if($('ul').next().next()[0] == $('button')[0]){
+      $('button').prev().remove()
+    }
+  });
+});
+//&& $('ul').next()[0] === $('button')[0]
 
 module.exports = CityInputContainer;

@@ -50,8 +50,12 @@ function getCurrentWeather(city){
 				return data
 			})
 		//.catch provides rejection description
-		.catch(function(err){
-			console.warn("Error with weatherApi" + err)
+		.catch(function(error){
+			console.log(error)
+			console.log(statusText)
+			// console.log("caught with wxAPI catch")
+			// console.warn("Error with weatherApi" + error)
+			return error
 		})
 };
 

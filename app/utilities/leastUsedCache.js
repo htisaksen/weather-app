@@ -81,7 +81,9 @@ CacheList.prototype.moveCache = function(node){
     // if true, move to head
     else if(!node.next){
       node.next = this.head;
+      this.head.prev = node;
       this.tail = node.prev;
+      this.tail.next = void 0;
       node.prev = void 0;
       this.head = node;
       return true;
@@ -102,6 +104,18 @@ CacheList.prototype.moveCache = function(node){
       return false;
     }
 
+};
+
+// autocomplete utility
+CacheList.prototype.autoFill = function() {
+  var node = this.tail;
+  var data = {}
+
+  while(node){
+    data[node.value] = null;
+    node = node.prev;
+  }
+  return data;
 };
 
 module.exports = {

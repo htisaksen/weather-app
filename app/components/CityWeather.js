@@ -61,22 +61,35 @@ function WeatherInterface(props){
 
 
 function CityWeather(props){
+  // console.log(props)
+  // console.log(props.isError)
+  // console.log('propserror ' +props.errorStatement)
+  if(props.isError){
+    return
+    <div style={styles.container}>
+      <h4 style={styles.heading}>Weather could not be retrieved. Please go back.</h4>
+    </div>
+  } else {
   return  props.isFetching === true
     // Ternary operator to check isLoading bool in cityContainer logic
     ? <Loading />
     : <div style={styles.container}>
         <h4 style ={styles.heading}>
-          {props.weatherData.data.name}
+          {props.weatherData.data.name}, {props.weatherData.data.sys.country}
         </h4>
+        <h5>
+          {props.weatherData.data.coord.lat}, {props.weatherData.data.coord.lon}
+        </h5>
         <WeatherInterface
           data={props.weatherData.data}/>
     </div>
+  }
 };
-
 CityWeather.PropTypes={
   city: PropTypes.string.isRequired,
   weatherData: PropTypes.object.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
 }
 
 module.exports = CityWeather;
