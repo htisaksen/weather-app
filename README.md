@@ -3,6 +3,12 @@
 
 **React style pattern**
 **Materialize design**
+**The server is run on Express/Node**
+**using babel and webpack**
+
+
+**Users will need to get their own API key from www.openweathermap.org and pass it to the _APIKEY variable in weatherApi.js**
+
 
 - Using containers/Components style
  - Containers hold business logic
@@ -21,7 +27,3 @@
       - uses axios to get data from openweathermap.org
     - leastUsedCache
       - cache to store x amount of inputs. Resets on page reload
-
-**The server is run on Express/Node **
-
-**using babel and webpack**
