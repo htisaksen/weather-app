@@ -38,13 +38,25 @@ function TodayDate(props){
   return <h5 style={styles.date}>Date: {todayDate()}</h5>
 }
 
+//using windyTv's iframe to load interactive map
+function WindyTv(props){
+  var source = "https://embed.windytv.com/?"+String(props.data.coord.lat)+","+String(props.data.coord.lon)+",6,temp,menu,message,metric.wind.m/s"
+  return(
+  <iframe
+    src={source}
+    width="750"
+    height="500"
+    frameBorder="0">
+  </iframe>
+  )
+}
+
 // displays weather information from API
 function WeatherInterface(props){
   return(
     <div className="Row">
       <div className="col s12">
-        <TodayDate
-          />
+        <TodayDate/>
         <ul
           style={styles.ulContent}
           className="col s12 m4">
@@ -54,6 +66,11 @@ function WeatherInterface(props){
           <li style={styles.paddingList}>Precipitation:  {props.data.weather[0].description}</li>
           <li style={styles.paddingList}>Wind Speed:  {props.data.wind.speed}m/s</li>
           <li style={styles.paddingList}>Wind Heading:  {Math.round(props.data.wind.deg)}°</li>
+
+          <li>
+            <WindyTv
+              data={props.data}/>
+          </li>
         </ul>
       </div>
     </div>
