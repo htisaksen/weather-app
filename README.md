@@ -24,6 +24,4 @@
 
 **The server is run on Express/Node **
 
-**Compiled with webpack**
-
-**JSX code is _____ with babel**
+**using babel and webpack**
