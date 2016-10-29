@@ -1,11 +1,7 @@
 
 **Daily Weather React/Express application**
 
-**React style pattern**
-
 **Materialize design**
-
-**The server is run on Express/Node**
 
 **using babel and webpack**
 
