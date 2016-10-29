@@ -53,12 +53,17 @@ const CityInputContainer = React.createClass({
         city = {this.state.city}/>
     )
   },
-
   componentDidMount: function() {
-    var data = cacheList.autoFill();
-    $('input.autocomplete').autocomplete({data: data});
+    $(function(){
+      // conditional check to set a placeholder to generate autocomplete UL
+      if( Object.keys(cacheList.autoFill()).length === 0){
+        var data = "placeholder"
+      } else {
+        var data = cacheList.autoFill();
+      }
+      $('input.autocomplete').autocomplete({data: data});
+    });
   },
-
 });
 
 module.exports = CityInputContainer;
