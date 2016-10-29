@@ -1,9 +1,10 @@
 //using axios as an api utility
 import axios from 'axios';
-import apiKey from './apiKey';
+// import apiKey from './apiKey';
 //setting API key to variables
+
 var _APIURL = "http://api.openweathermap.org/data/2.5/";
-var _APIKEY = apiKey;
+var _APIKEY = "1edb7fd1f51cdac25a36b46980500f87";
 
 //This utility will provide access to the open weather API.
 // From openweather documents: 'To make the result more accurate just put the city name and country divided by comma.'

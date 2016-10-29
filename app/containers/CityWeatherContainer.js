@@ -18,12 +18,6 @@ var CityWeatherContainer = React.createClass({
   componentDidMount: function(){
     this.getWeather(this.props.params.city)
   },
-  // componentWillReceiveProps: function(){
-  //   this.getWeather(this.props.params.city)
-  // },
-  // componentWillMount: function(){
-  //   this.getWeather(this.props.params.city)
-  // },
   // passes user input into weatherApi and retrieves the weather json object
   // need to add a .catch for invalid city name
   getWeather : function(city){

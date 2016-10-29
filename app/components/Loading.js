@@ -12,9 +12,9 @@ function Loading(props){
 			style={styles.myContainer}
 			className="container">
 					<div className="row">
-						<h1 className="col s12 center">
+						<h3 className="col s12 center">
 							Loading
-						</h1>
+						</h3>
 					</div>
 					<div className="row">
 						<div className="progress col s12 m6 offset-m3">

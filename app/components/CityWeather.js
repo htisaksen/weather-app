@@ -7,12 +7,12 @@ var PropTypes = React.PropTypes;
 const styles = {
   windyContainer: {
   height: '500px',
-  marginTop: '7.5em',
+  marginTop: '4.5em',
   borderRadius: '2px',
   },
   card: {
     height:'500px',
-    marginTop: '7.5em',
+    marginTop: '4.5em',
   },
 	heading: {
 		textDecoration: "underline",
@@ -22,7 +22,7 @@ const styles = {
     paddingTop: '5%',
 	},
 	date:{
-		textAlign: "left",
+		textAlign: "center",
     paddingLeft: '5%',
     color: "#cfd8dc",
 	},
@@ -37,11 +37,6 @@ const styles = {
     fontSize: '1.0em',
     display: 'flex-inline-block'
 	},
-  coords: {
-    textAlign: "center",
-    color: '#cfd8dc',
-    paddingTop: '5%',
-  }
 };
 
 // imported date function from date utility
@@ -51,7 +46,7 @@ function TodayDate(props){
 
 //using windyTv's iframe to load interactive map
 function WindyTv(props){
-  var source = "https://embed.windytv.com/?"+String(props.data.coord.lat)+","+String(props.data.coord.lon)+",6,temp,menu,message,metric.wind.m/s"
+  var source = "https://embed.windytv.com/?"+String(props.data.coord.lat)+","+String(props.data.coord.lon)+",11,temp,menu,message,metric.wind.m/s"
   return(
   <iframe
     src={source}
@@ -73,21 +68,18 @@ function WeatherDetailCard(props){
               <h5 style ={styles.heading}>
                 {props.data.name}, {props.data.sys.country}
               </h5>
-              <h6 style ={styles.coords}>
-                Latitude: {props.data.coord.lat}, Longitude: {props.data.coord.lon}
-              </h6>
             </span>
           </div>
             <TodayDate/>
               <ul
                 style={styles.ulContent}
                 className="white-text">
-                <li style={styles.paddingList}>Temperature:  {props.data.main.temp}°C</li>
-                <li style={styles.paddingList}>Cloud Coverage:  {props.data.clouds.all}%</li>
-                <li style={styles.paddingList}>Humidity:  {props.data.main.humidity}%</li>
-                <li style={styles.paddingList}>Precipitation:  {props.data.weather[0].description}</li>
                 <li style={styles.paddingList}>Wind Speed:  {props.data.wind.speed}m/s</li>
                 <li style={styles.paddingList}>Wind Heading:  {Math.round(props.data.wind.deg)}°</li>
+                <li style={styles.paddingList}>Temperature:  {props.data.main.temp}°C</li>
+                <li style={styles.paddingList}>Humidity:  {props.data.main.humidity}%</li>
+                <li style={styles.paddingList}>Cloud Coverage:  {props.data.clouds.all}%</li>
+                <li style={styles.paddingList}>Precipitation:  {props.data.weather[0].description}</li>
               </ul>
           </div>
         </div>
