@@ -2,7 +2,7 @@ import React from 'react';
 import Loading from './Loading';
 import todayDate from '../utilities/date';
 
-var PropTypes = React.PropTypes;
+let PropTypes = React.PropTypes;
 
 const styles = {
   windyContainer: {
@@ -46,7 +46,7 @@ function TodayDate(props){
 
 //using windyTv's iframe to load interactive map
 function WindyTv(props){
-  var source = "https://embed.windytv.com/?"+String(props.data.coord.lat)+","+String(props.data.coord.lon)+",11,temp,menu,message,metric.wind.m/s"
+  let source = "https://embed.windytv.com/?"+String(props.data.coord.lat)+","+String(props.data.coord.lon)+",11,temp,menu,message,metric.wind.m/s"
   return(
   <iframe
     src={source}

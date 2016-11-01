@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 const styles = {
 	nav: {
-		background: "linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)",
+		background: "linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2fb8d8 75%)",
 	},
 	fontColor: {
 		color: "white",
@@ -39,7 +39,7 @@ const Main = React.createClass({
 								<Link
 									to='/'
 									style={styles.back}>
-									Back
+									Home
 								</Link>
 							</li>
 						</ul>

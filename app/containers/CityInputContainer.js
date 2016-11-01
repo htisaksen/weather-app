@@ -1,9 +1,9 @@
 import React from 'react';
 import CityInput from '../components/CityInput';
-import {Node, CacheList} from '../utilities/leastUsedCache';
+import { Node, CacheList } from '../utilities/leastUsedCache';
 
 //set maximum cache storages with CacheList({"maxCaches":<set max caches>});
-var cacheList = new CacheList({"maxCaches":15});
+let cacheList = new CacheList({"maxCaches":15});
 
 // Rendered in Home component
 // Used to update state and store user inputs
@@ -20,27 +20,32 @@ const CityInputContainer = React.createClass({
     }
   },
 
-  // manages case when user submits empty string
-  onCityInput: function(){
-    if(this.state.city === ''){
-      this.setState({
-        search: false,
-        city: ''
-      })
-    } else {
-      // Inputs submitted city into least used cache
-      cacheList.set(this.state.city);
-      // pushes submitted city into the route
-      this.context.router.push({
-        pathname: '/weather/' + this.state.city
-      })
+  // user input logic
+  onCityInput: function(event){
+    // if event is enterkey or click
+    if (event.keyCode === 13 || event.type === 'click'){
+      //  manages empty input
+      if(this.state.city === ''){
+        this.setState({
+          search: false,
+          city: ''
+        })
+      } else {
+        // Inputs submitted city into least used cache
+        cacheList.set(this.state.city);
+
+        // pushes submitted city into the route
+        this.context.router.push({
+          pathname: '/weather/' + this.state.city
+        })
+      }
     }
   },
 
   // updates this.state.city as user inputs
   updateCity: function(event){
     this.setState({
-      city: event.target.value
+      city: $('input.autocomplete').val()
     })
   },
 
@@ -50,7 +55,7 @@ const CityInputContainer = React.createClass({
         search = {this.state.search}
         onCityInput = {this.onCityInput}
         onUpdateCity = {this.updateCity}
-        city = {this.state.city}/>
+        city = {this.state.city} />
     )
   },
   componentDidMount: function() {

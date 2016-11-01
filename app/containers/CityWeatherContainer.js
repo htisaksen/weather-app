@@ -3,7 +3,7 @@ import CityWeather from '../components/CityWeather';
 import weatherApi from '../utilities/weatherApi';
 
 
-var CityWeatherContainer = React.createClass({
+const CityWeatherContainer = React.createClass({
   contextTypes:{
     router: React.PropTypes.object.isRequired
   },
