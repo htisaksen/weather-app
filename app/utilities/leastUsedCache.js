@@ -9,7 +9,7 @@ var Node = function Node(config){
   this.prev = config.prev;
 };
 
-// creating cachelist with a cacheMap to search for data.
+// creating cachelist with a cacheMap to search for cache.
 // doubly linked list is more efficient in storage than iterating through a linked list
 var CacheList = function CacheList(config){
   config = config || {};
@@ -60,15 +60,15 @@ CacheList.prototype.createCache = function(value){
 
   var newCache = new Node({'value':value});
   // validate that there is a head node
-  // sets pointers on this.head and new node
   if(this.head){
+    // sets pointers on this.head and new node
     newCache.next = this.head;
     this.head.prev = newCache;
     this.head = newCache;
   }
   // checks if the cache is empty.
-  //sets the new node(cache) to both head and tail
   else if(this.cacheCount === 0){
+    //sets the new node(cache) to both head and tail
     this.tail = this.head = newCache;
   }
   this.cacheCount += 1;
@@ -82,8 +82,8 @@ CacheList.prototype.moveCache = function(node){
       return true;
     }
     // validate that node.prev is a node
-    // if true, move to head
     else if(!node.next){
+      // if true, move to head
       node.next = this.head;
       this.head.prev = node;
       this.tail = node.prev;
@@ -93,8 +93,8 @@ CacheList.prototype.moveCache = function(node){
       return true;
     }
     // validate if node.next and node.prev is a node
-    // if true, reset node's next and prev node pointers to point at each other
     else if (node.next && node.prev){
+      // if true, reset node's next and prev node pointers to point at each other
       var nextNode = node.next;
       var prevNode = node.prev;
       prevNode.next = nextNode;
@@ -110,7 +110,7 @@ CacheList.prototype.moveCache = function(node){
 
 };
 
-// autocomplete dataset format utility
+// autocomplete dataset format utility in cityInputContainer
 // autocomplete requires format(data: {key:val,key:val})
 CacheList.prototype.autoFill = function() {
   var node = this.tail;

@@ -1,7 +1,7 @@
-var todayDate = function(){
-  var date = new Date();
+const todayDate = function(){
+  let date = new Date();
   //date.getMonth() returns a number -1 from the actual month(october = 9). monthArray will display the month based on the number.
-  var monthArray = [
+  let monthArray = [
     "January",
     "February",
     "March",
@@ -16,5 +16,5 @@ var todayDate = function(){
     "December"
 ];
   return monthArray[date.getMonth()] + " " + date.getDate()+ 'th' + " " + date.getFullYear()
-}
+};
 module.exports = todayDate;
