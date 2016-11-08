@@ -60,4 +60,4 @@ var getCurrentWeather = function(city){
 //export json data as getCurrentWeather
 module.exports = {
 	getCurrentWeather: getCurrentWeather
-};
+}; 
