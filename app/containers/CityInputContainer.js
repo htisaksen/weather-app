@@ -16,7 +16,8 @@ const CityInputContainer = React.createClass({
   getInitialState: function(){
     return {
       search: true,
-      city: ''
+      city: '',
+      data: []
     }
   },
 
@@ -24,6 +25,7 @@ const CityInputContainer = React.createClass({
   onCityInput: function(event){
     // if event is enterkey or click
     if (event.keyCode === 13 || event.type === 'click'){
+      event.preventDefault()
       //  manages empty input
       if(this.state.city === ''){
         this.setState({
@@ -43,9 +45,9 @@ const CityInputContainer = React.createClass({
   },
 
   // updates this.state.city as user inputs
-  updateCity: function(event){
+  updateCity: function(){
     this.setState({
-      city: $('input.autocomplete').val()
+      city: $('input').val()
     })
   },
 
@@ -55,19 +57,17 @@ const CityInputContainer = React.createClass({
         search = {this.state.search}
         onCityInput = {this.onCityInput}
         onUpdateCity = {this.updateCity}
-        city = {this.state.city} />
+        city = {this.state.city}
+        data = {this.state.data}  />
     )
   },
   componentDidMount: function() {
-    $(function(){
-      // conditional check to set a placeholder to generate autocomplete UL
-      if( Object.keys(cacheList.autoFill()).length === 0){
-        var data = "placeholder"
-      } else {
-        var data = cacheList.autoFill();
-      }
-      $('input.autocomplete').autocomplete({data: data});
-    });
+
+    var data = cacheList.autoFill();
+    this.setState({
+      data: data
+    })
+
   },
 });
 

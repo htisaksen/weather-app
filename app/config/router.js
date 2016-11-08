@@ -5,7 +5,7 @@ import Main from '../components/Main';
 import HomeContainer from '../containers/HomeContainer';
 import CityWeatherContainer from '../containers/CityWeatherContainer';
 
-const router = (
+const Routers = () => (
 	<Router history={browserHistory}>
 		<Route path='/' component={Main}>
 			<IndexRoute component={HomeContainer} />
@@ -14,4 +14,4 @@ const router = (
 	</Router>
 );
 
-module.exports = router;
+module.exports = Routers;

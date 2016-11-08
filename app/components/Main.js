@@ -51,4 +51,4 @@ const Main = React.createClass({
 	}
 });
 
-export default Main;
+module.exports = Main;

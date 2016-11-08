@@ -10,7 +10,7 @@ var Node = function Node(config){
 };
 
 // creating cachelist with a cacheMap to search for cache.
-// doubly linked list is more efficient in storage than iterating through a linked list
+// doubly linked list is more efficient in storage than a linked list
 var CacheList = function CacheList(config){
   config = config || {};
   this.cacheMap = {};
@@ -54,10 +54,10 @@ CacheList.prototype.set = function(search){
 };
 
 CacheList.prototype.createCache = function(value){
-  // creates node with value equal to the param
-  // places new node at the front of the CacheList
   if(this.cacheCount > this.maxCaches) return false;
 
+  // creates node with value equal to the param
+  // places new node at the front of the CacheList
   var newCache = new Node({'value':value});
   // validate that there is a head node
   if(this.head){
@@ -111,14 +111,15 @@ CacheList.prototype.moveCache = function(node){
 };
 
 // autocomplete dataset format utility in cityInputContainer
-// autocomplete requires format(data: {key:val,key:val})
-CacheList.prototype.autoFill = function() {
-  var node = this.tail;
-  var data = {};
+// autocomplete requires format(data: {textKey:searchVal,valueKey:searchVal})
+CacheList.prototype.autoFill = function(){
+  var node = this.head;
+  var data = [];
 
   while(node){
-    data[node.value] = null;
-    node = node.prev;
+    var textValObject = {textKey:node.value, valueKey:node.value}
+    data.push(textValObject)
+    node = node.next;
   }
   return data;
 };
