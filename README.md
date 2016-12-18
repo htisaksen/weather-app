@@ -3,7 +3,7 @@
 
 **Materialize design**
 
-**using babel and webpack**
+**using babel for transpiling and webpack to compile**
 
 
 **Users will need to get their own API key from www.openweathermap.org and pass it to the _APIKEY variable in weatherApi.js**
