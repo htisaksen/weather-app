@@ -4,7 +4,7 @@ var app = express();
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
 
-var somePath=path.resolve(__dirname, 'app', 'index.js')
+var indexPath=path.resolve(__dirname, 'app', 'index.js')
 
 var compiler = webpack(webpackConfig);
 
@@ -21,7 +21,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 //catch all route function
 app.get('*', function(req, res){
-	res.sendFile(somePath);
+	res.sendFile(indexPath);
 });
 
 
